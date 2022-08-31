@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <h2>내가 쓴 리뷰</h2>
+    <ul>
+        {% for review in my_reviews %}
+        <li>
+            <a href="{% url 'review_detail' review.pk %}">{{review.building_id.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% comment %}
+    <h2>내가 찜한 건물</h2>
+    <ul>
+        {% for pick in my_picks %}
+        <li>
+            <a href="{% url 'building_detail' pick.building_id.pk %}">{{pick.building_id.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endcomment %}
+    {% endif %}
+
+    <a href="{% url 'home' %}">홈으로</a>
+    
+    
+</body>
+</html>
